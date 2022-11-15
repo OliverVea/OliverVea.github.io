@@ -1,0 +1,26 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme="loveit"
+
+[params]
+  title = "Oliver Vea Portfolio"
+  description = "Page documenting my various projects"
+  [params.header]
+    name = "Oliver Vea"
+    pre = "<"
+    post = " />"
+  [params.footer]
+    hugo = false
+    copyright = false
+  [params.home]
+    subtitle = "Portfolio of Oliver Vea"
+  [params.social]
+    GitHub = "OliverVea"
+    Linkedin = "oliver-vea"
+    Email = "oliver.vea@gmail.com"
+    Phone = "+4522879280"
+  [params.page]
+    [params.page.share]
+      enable = false
+      

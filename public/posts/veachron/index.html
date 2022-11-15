@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>veachron - My New Hugo Site</title><meta name="Description" content="Page documenting my various projects"><meta property="og:title" content="veachron" />
+<meta property="og:description" content="Overview Veachron is an application which can help storing and displaying timings. The main use-case is for debugging, as it can be embedded into code and used to get actual timings. The project is freely available on Github.
+The project consists of a Python application, using the Flask framework to host a REST API. The API is documented through swagger, to ensure ease of use.
+The application can be hosted directly, but alternatively, two Docker images are provided, with the application and a PostgreSQL database, for storing the timer logs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/veachron/" />
+<meta property="article:published_time" content="2022-11-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-13T00:00:00+00:00" /><meta property="og:site_name" content="Oliver Vea Portfolio" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="veachron"/>
+<meta name="twitter:description" content="Overview Veachron is an application which can help storing and displaying timings. The main use-case is for debugging, as it can be embedded into code and used to get actual timings. The project is freely available on Github.
+The project consists of a Python application, using the Flask framework to host a REST API. The API is documented through swagger, to ensure ease of use.
+The application can be hosted directly, but alternatively, two Docker images are provided, with the application and a PostgreSQL database, for storing the timer logs."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/veachron/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "veachron",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/posts\/veachron\/"
+        },"genre": "posts","wordcount":  999 ,
+        "url": "http:\/\/example.org\/posts\/veachron\/","datePublished": "2022-11-13T00:00:00+00:00","dateModified": "2022-11-13T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "Oliver Vea"},"author": {
+                "@type": "Person",
+                "name": "Oliver Vea"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="" data-header-mobile=""><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">My New Hugo Site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">veachron</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Oliver Vea</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-11-13">2022-11-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;999 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#installation">Installation</a>
+      <ul>
+        <li><a href="#direct-hosting">Direct Hosting</a></li>
+        <li><a href="#prebuilt-docker-images">Prebuilt Docker images</a></li>
+        <li><a href="#docker-images-from-source">Docker images from source</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-veachron">Using veachron</a>
+      <ul>
+        <li><a href="#using-the-api">Using the API</a></li>
+        <li><a href="#using-the-ui">Using the UI</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="overview">Overview</h2>
+<p>Veachron is an application which can help storing and displaying timings. The main use-case is for debugging, as it can be embedded into code and used to get actual timings. The project is freely available <a href="https://github.com/OliverVea/veachron" target="_blank" rel="noopener noreffer ">on Github</a>.</p>
+<p>The project consists of a Python application, using the <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank" rel="noopener noreffer "><strong>Flask</strong></a> framework to host a <strong>REST API</strong>. The API is documented through <a href="https://swagger.io/" target="_blank" rel="noopener noreffer "><strong>swagger</strong></a>, to ensure ease of use.</p>
+<p>The application can be hosted directly, but alternatively, two <a href="https://hub.docker.com/repository/docker/olivervea/veachron-ui" target="_blank" rel="noopener noreffer "><strong>Docker</strong></a> <a href="https://hub.docker.com/repository/docker/olivervea/veachron-api" target="_blank" rel="noopener noreffer "><strong>images</strong></a> are provided, with the application and a <a href="https://hub.docker.com/_/postgres" target="_blank" rel="noopener noreffer "><strong>PostgreSQL</strong></a> database, for storing the timer logs.</p>
+<p>A test suite with <a href="https://github.com/OliverVea/veachron/blob/main/tests/test_application/test_timing.py" target="_blank" rel="noopener noreffer "><strong>end to end tests</strong></a> covering the entire functionality of the application has been added to the project.</p>
+<p>To ensure that changes to the code do not effect existing functionality, the entire test suite is run on all pull requests, and it is required that all tests pass before the pull request can be merged. This is achieved using <a href="https://github.com/OliverVea/veachron/actions" target="_blank" rel="noopener noreffer "><strong>Github Actions</strong></a>.</p>
+<p>A release pipeline has been added to push the application to <a href="https://test.pypi.org/project/veachron/" target="_blank" rel="noopener noreffer "><strong>PyPi</strong></a> and <a href="https://hub.docker.com/u/olivervea" target="_blank" rel="noopener noreffer "><strong>Docker hub</strong></a>.</p>
+<p>To display the timings in a visually easy-to-understand manner, a <a href="https://reactjs.org/" target="_blank" rel="noopener noreffer "><strong>React</strong></a> application has been written. The UI can be hosted with <a href="https://nodejs.org/en/" target="_blank" rel="noopener noreffer "><strong>Node.js</strong></a> and allows the user to have a high level of granularity by expanding and minimizing individual timing nodes.</p>
+<p>Veachron is mostly a demonstration project for showing some of the skills I&rsquo;ve picked up, while working at hesehus. The usefulness of the application itself is highly questionable, as it is probably completely unable to do precise timings without adding to the measurements by requiring the application to wait for network requests.</p>
+<h2 id="installation">Installation</h2>
+<p>Two options for running veachron is provided. Firstly, it can be installed with PyPi and directly run with Python. Alternatively, a docker image is available and can be used to host veachron in docker.</p>
+<p>As veachron requires a PostSQL database for storing timings, a PostgreSQL connection has to be configured in veachron. This can be configured with the following environment variables:</p>
+<ul>
+<li><code>DB_HOST</code> specifying the host address for the database.</li>
+<li><code>DB_USER</code> specifying the user for connecting to the database.</li>
+<li><code>DB_PASSWORD</code> specifying the password for connecting to the database.</li>
+</ul>
+<p>It is vital that a database with the name <code>veachron</code> exists in the PostgreSQL server and that the user credentials provided to veachron has access to this database.</p>
+<p>For ease of use, the Docker method of hosting is recommended, whenever Docker is available.</p>
+<h3 id="direct-hosting">Direct Hosting</h3>
+<p>To run veachron with Python directly, it has been pushed to the <a href="https://test.pypi.org/project/veachron/" target="_blank" rel="noopener noreffer ">PyPi test server</a>. This means it can be installed with pip using the command <code>pip install -i https://test.pypi.org/simple/ veachron</code>.</p>
+<p>It can then be run with Python using the command <code>python -m veachron</code>.</p>
+<blockquote>
+<p>Currently, direct hosting does not support running the UI.</p>
+</blockquote>
+<h3 id="prebuilt-docker-images">Prebuilt Docker images</h3>
+<p>The simplest way to run veachron is using the publically available docker images from <a href="https://hub.docker.com/r/olivervea/veachron" target="_blank" rel="noopener noreffer ">Docker hub</a>.</p>
+<p>The following docker-compose file shows how to use the image and configure it to use a PostgreSQL database, also hosted with Docker:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">api</span>:
+    <span style="color:#66d9ef">image</span>: olivervea/veachron-api:latest
+    <span style="color:#66d9ef">environment</span>:
+      <span style="color:#66d9ef">DB_HOST</span>: db
+      <span style="color:#66d9ef">DB_USER</span>: user
+      <span style="color:#66d9ef">DB_PASSWORD</span>: password
+      <span style="color:#66d9ef">LOG_LEVEL</span>: WARNING
+
+  <span style="color:#66d9ef">ui</span>:
+    <span style="color:#66d9ef">image</span>: olivervea/veachron-ui:latest
+
+  <span style="color:#66d9ef">db</span>:
+    <span style="color:#66d9ef">image</span>: postgres
+    <span style="color:#66d9ef">restart</span>: always
+    <span style="color:#66d9ef">environment</span>: 
+      <span style="color:#66d9ef">POSTGRES_USER</span>: user
+      <span style="color:#66d9ef">POSTGRES_PASSWORD</span>: password
+      <span style="color:#66d9ef">POSTGRES_DB</span>: veachron
+    <span style="color:#66d9ef">volumes</span>:
+    - postgresql:/var/lib/postgresql/data
+
+  <span style="color:#66d9ef">nginx</span>:
+    <span style="color:#66d9ef">image</span>: nginx:<span style="color:#ae81ff">1.21</span>
+    <span style="color:#66d9ef">platform</span>: linux
+    <span style="color:#66d9ef">ports</span>:
+      - <span style="color:#ae81ff">80</span>:<span style="color:#ae81ff">80</span>
+    <span style="color:#66d9ef">restart</span>: on-failure
+    <span style="color:#66d9ef">volumes</span>:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+<span style="color:#66d9ef">volumes</span>:
+  <span style="color:#66d9ef">postgresql</span>:
+</code></pre></div><p>The docker-compose file includes 4 services: the veachron API and UI, the PostgreSQL database and Nginx for nicer routing between the three.</p>
+<blockquote>
+<p>Due to issues with configuring the React app which hasn&rsquo;t been solved, the current Nginx routing configuration is the only configuration supported by the UI.</p>
+</blockquote>
+<p>The following file shows the Nginx configuration:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">events</span> {
+
+}
+
+<span style="color:#66d9ef">http</span> {
+  <span style="color:#f92672">resolver</span> <span style="color:#ae81ff">127</span><span style="color:#e6db74">.0.0.11</span> <span style="color:#e6db74">ipv6=off</span> <span style="color:#e6db74">valid=1s</span>;
+
+  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $remote_addr;
+  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> $scheme;
+
+  <span style="color:#f92672">server</span> {
+    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
+    <span style="color:#f92672">server_name</span> <span style="color:#e6db74">ui.localhost</span>;
+
+    <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+      <span style="color:#f92672">set</span> $backend <span style="color:#e6db74">&#34;http://ui:3000&#34;</span>;
+      <span style="color:#f92672">proxy_pass</span> $backend;
+    }
+  }
+
+  <span style="color:#f92672">server</span> {
+    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span>;
+    <span style="color:#f92672">server_name</span> <span style="color:#e6db74">api.localhost</span>;
+
+    <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+      <span style="color:#f92672">set</span> $backend <span style="color:#e6db74">&#34;http://api:5000&#34;</span>;
+      <span style="color:#f92672">proxy_pass</span> $backend;
+    }
+  }
+
+  <span style="color:#f92672">server</span> {
+    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">80</span> <span style="color:#e6db74">default_server</span>;
+    <span style="color:#f92672">server_name</span> <span style="color:#e6db74">_</span>;
+
+    <span style="color:#f92672">large_client_header_buffers</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">16k</span>;
+
+    <span style="color:#f92672">return</span> <span style="color:#ae81ff">404</span>;
+  }
+}
+</code></pre></div><p>This file is referenced in the docker-compose.yaml file, and must therefore be available, so the Nginx routing is configured. The file structure should resemble the following:</p>
+<pre><code>└── Parent Folder
+    ├── docker-compose.yml
+    └── nginx.conf
+</code></pre><p>To run veachron, navigate inside the parent folder and run <code>docker compose up -d</code>.</p>
+<h3 id="docker-images-from-source">Docker images from source</h3>
+<p>As veachron is completely open source, it is also possible to check out the <a href="https://github.com/OliverVea/veachron" target="_blank" rel="noopener noreffer ">Github repository</a> and build the Docker images locally.</p>
+<p>This allows a user to change the source code of veachron and configure to ones hearts content, as well as run the tests locally.</p>
+<p>Simply follow the readme.md file in the repository root for instructions on how to build and run the Docker images from source code.</p>
+<h2 id="using-veachron">Using veachron</h2>
+<p>After running the application, the UI can be found at <a href="http://ui.localhost" target="_blank" rel="noopener noreffer ">http://ui.localhost</a>, and the API can be found at <a href="http://api.localhost" target="_blank" rel="noopener noreffer ">http://api.localhost</a>.</p>
+<h3 id="using-the-api">Using the API</h3>
+<p>When accessing the API in a browser, it automatically redirects to the swagger documentation, where the API can be tinkered with.</p>
+<p>The idea of the API currently rests on two collections: the <code>timers</code> collection, and a <code>timings</code> collection for each <code>timer</code>.</p>
+<p>The <code>timer</code> marks some code segment to be timed. It has an <code>entry</code> and an <code>exit</code>. A <code>timer</code> can also have a <code>parentId</code>, denoting that the timer is inside of another timer, so a ratio of how much time is spent is specific segments of the code block can be calculated and displayed.</p>
+<p>Whenever the <code>entry</code> of a timer is reached, a <code>timers/{timerId}/add-entry</code> post request is made, to register the time of the entry. This instantiates a <code>timing</code> in the <code>timings</code> collection of the <code>timer</code>.</p>
+<blockquote>
+<p>It is highly recommended to use a client-side <code>timestamp</code>, as veachron will resort to a server-side <code>timestamp</code>, if none is provided.</p>
+</blockquote>
+<p>When the corresponding <code>exit</code> of the <code>timer</code> is reached, a <code>timers/{timerId}/timings/{timingId}/add-exit</code> post request can then be made to complete the <code>timing</code>, adding it to the total time spent of the <code>timer</code>.</p>
+<p>The endpoint <code>timers/list-timings</code> can be used to see a tree of all <code>timers</code> and a breakdown of the time spendeture for each.</p>
+<h3 id="using-the-ui">Using the UI</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-11-13</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
