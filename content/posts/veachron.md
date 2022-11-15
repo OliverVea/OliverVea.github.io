@@ -50,41 +50,7 @@ The simplest way to run veachron is using the publically available docker images
 
 The following docker-compose file shows how to use the image and configure it to use a PostgreSQL database, also hosted with Docker:
 
-```yaml
-services:
-  api:
-    image: olivervea/veachron-api:latest
-    environment:
-      DB_HOST: db
-      DB_USER: user
-      DB_PASSWORD: password
-      LOG_LEVEL: WARNING
-
-  ui:
-    image: olivervea/veachron-ui:latest
-
-  db:
-    image: postgres
-    restart: always
-    environment: 
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: veachron
-    volumes:
-    - postgresql:/var/lib/postgresql/data
-
-  nginx:
-    image: nginx:1.21
-    platform: linux
-    ports:
-      - 80:80
-    restart: on-failure
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-
-volumes:
-  postgresql:
-```
+{{< gist olivervea 3016b2db6e01bdaa57c46409784c7eab >}}
 
 The docker-compose file includes 4 services: the veachron API and UI, the PostgreSQL database and Nginx for nicer routing between the three. 
 
@@ -92,48 +58,7 @@ The docker-compose file includes 4 services: the veachron API and UI, the Postgr
 
 The following file shows the Nginx configuration:
 
-```nginx
-events {
-
-}
-
-http {
-  resolver 127.0.0.11 ipv6=off valid=1s;
-
-  proxy_set_header Host $host;
-  proxy_set_header X-Forwarded-For $remote_addr;
-  proxy_set_header X-Forwarded-Proto $scheme;
-
-  server {
-    listen 80;
-    server_name ui.localhost;
-
-    location / {
-      set $backend "http://ui:3000";
-      proxy_pass $backend;
-    }
-  }
-
-  server {
-    listen 80;
-    server_name api.localhost;
-
-    location / {
-      set $backend "http://api:5000";
-      proxy_pass $backend;
-    }
-  }
-
-  server {
-    listen 80 default_server;
-    server_name _;
-
-    large_client_header_buffers 4 16k;
-
-    return 404;
-  }
-}
-```
+{{< gist olivervea 1d6c4bb1db2b1ab26d7f415ef16f4b60 >}}
 
 This file is referenced in the docker-compose.yaml file, and must therefore be available, so the Nginx routing is configured. The file structure should resemble the following:
 
