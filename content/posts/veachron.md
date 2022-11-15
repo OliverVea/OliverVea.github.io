@@ -172,6 +172,3 @@ Whenever the `entry` of a timer is reached, a `timers/{timerId}/add-entry` post 
 When the corresponding `exit` of the `timer` is reached, a `timers/{timerId}/timings/{timingId}/add-exit` post request can then be made to complete the `timing`, adding it to the total time spent of the `timer`.
 
 The endpoint `timers/list-timings` can be used to see a tree of all `timers` and a breakdown of the time spendeture for each.
-
-### Using the UI
-
