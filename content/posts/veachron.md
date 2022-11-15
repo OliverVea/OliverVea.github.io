@@ -8,7 +8,7 @@ author: "Oliver Vea"
 
 Veachron is an application which can help storing and displaying timings. The main use-case is for debugging, as it can be embedded into code and used to get actual timings. The project is freely available [on Github](https://github.com/OliverVea/veachron).
 
-The project consists of a Python application, using the [__Flask__](https://flask.palletsprojects.com/en/2.2.x/) framework to host a __REST API__. The API is documented through [__swagger__](https://swagger.io/), to ensure ease of use.
+The project consists of a Python application, using the [__Flask__](https://flask.palletsprojects.com/en/2.2.x/) framework to host a [__REST API__](https://restfulapi.net/). The API is documented through [__swagger__](https://swagger.io/), to ensure ease of use.
 
 The application can be hosted directly, but alternatively, two [__Docker__](https://hub.docker.com/repository/docker/olivervea/veachron-ui) [__images__](https://hub.docker.com/repository/docker/olivervea/veachron-api) are provided, with the application and a [__PostgreSQL__](https://hub.docker.com/_/postgres) database, for storing the timer logs.
 
