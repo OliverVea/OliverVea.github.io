@@ -496,10 +496,10 @@
     thumbnailUrl = ""
 
   [params.analytics]
-    enable = false
+    enable = true
     
     [params.analytics.google]
-      id = ""
+      id = "G-ZCCYWNGHSE"
 
       # whether to anonymize IP
       anonymizeIP = true
