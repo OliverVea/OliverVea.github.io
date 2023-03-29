@@ -3,6 +3,9 @@
     extended = true
     min = "0.62.0"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
   # site default theme ["auto", "light", "dark"]
   defaultTheme = "auto"
