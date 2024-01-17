@@ -21,10 +21,10 @@
   dateFormat = "2006-01-02"
 
   # website title for Open Graph and Twitter Cards
-  title = "Portfolio Site of Oliver Vea"
+  title = "Personal DevBlog of Oliver Vea"
 
   # website description for RSS, SEO, Open Graph and Twitter Cards
-  description = "Portfolio Site of Oliver Vea"
+  description = "Personal DevBlog of Oliver Vea"
 
   # website images for Open Graph and Twitter Cards
   images = []
@@ -98,7 +98,7 @@
 
   [params.app]
     # optional site title override for the app when added to an iOS home screen or Android launcher
-    title = "Oliver Vea Portfolio Site"
+    title = "Oliver Vea Personal DevBlog"
 
     # whether to omit favicon resource links
     noFavicon = false
@@ -253,7 +253,7 @@
     HackTheBox = ""
     RootMe= ""
     Email = "oliver.vea@gmail.com"
-    Phone = "+4522879280"
+    Phone = ""
     RSS = ""
 
   [params.page]
@@ -366,7 +366,7 @@
       Mix = false
       
     [params.page.comment]
-      enable = false
+      enable = true
       
       [params.page.comment.disqus]
         enable = false
@@ -422,7 +422,7 @@
         outlined = false
         
       [params.page.comment.commento]
-        enable = false
+        enable = true
         
       [params.page.comment.utterances]
         enable = false

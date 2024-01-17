@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://olivervea.github.io/"
 languageCode = "en-us"
 title = "Oliver Vea"
 theme="loveit"
@@ -19,8 +19,7 @@ theme="loveit"
 #    GitHub = "OliverVea"
 #    Linkedin = "oliver-vea"
 #    Email = "oliver.vea@gmail.com"
-#    Phone = "+4522879280"
 #  [params.page]
 #    [params.page.share]
-#      enable = false
+#      enable = true
       
