@@ -1,16 +1,17 @@
 ---
-title: "FluentFuzzy"
+title: "Fuzzy Logic with Fluent Syntax"
 date: "2023-08-28"
 author: "Oliver Vea"
 tags:
     - Project
+    - Fuzzy Logic
 ---
 
 ## Overview
 
 FluentFuzzy is a .NET package for adding fuzzy logic to a project in an easily readable, fluent way. The project is freely available [on Github](https://github.com/OliverVea/FluentFuzzy).
 
-I've written an introductory article on fuzzy logic [here](../fuzzy-logic), which explains the basic concept and how it works.
+I've written an introductory post on fuzzy logic [here](../fuzzy-logic), which explains the basic concept and how it works.
 
 The project includes four source projects and a test project.
 
@@ -36,7 +37,7 @@ FuzzyInput angle = new(() => angleValue);
 FuzzyOutput torque = new();
 ```
 
-The membership functions can then be set. The `const int` values are simply identifiers for the membership functions. They can be named so they are easily identifiable. The membership functions are the same as in the [example](../fuzzy-logic#what-is-fuzzy-logic) from the earlier article.
+The membership functions can then be set. The `const int` values are simply identifiers for the membership functions. They can be named so they are easily identifiable. The membership functions are the same as in the [example from the earlier post](../fuzzy-logic#what-is-fuzzy-logic).
 
 ```cs
 const int veryNegative = 0;

@@ -1,5 +1,5 @@
 ---
-title: "veachron"
+title: ".NET package for code timing"
 date: "2022-11-13"
 author: "Oliver Vea"
 tags:

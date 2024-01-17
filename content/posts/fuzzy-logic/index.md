@@ -1,9 +1,10 @@
 ---
-title: "Fuzzy logic"
+title: "Introduction to Fuzzy Logic"
 date: "2023-08-24"
 author: "Oliver Vea"
 tags:
     - Theory
+    - Fuzzy Logic
 ---
 
 ## Introduction
