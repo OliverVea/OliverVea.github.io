@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Theory - Tag - Oliver Vea</title>
+        <link>http://localhost:1313/tags/theory/</link>
+        <description>Theory - Tag - Oliver Vea</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 20 Dec 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/theory/" rel="self" type="application/rss+xml" /><item>
+    <title>Introduction to Semantic Search</title>
+    <link>http://localhost:1313/posts/semantic-search/</link>
+    <pubDate>Wed, 20 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>Oliver Vea</author>
+    <guid>http://localhost:1313/posts/semantic-search/</guid>
+    <description><![CDATA[Overview Recently, I&rsquo;ve been researching semantic search, since elasticsearch 8 has added support for doing vector search as part of an ordinary search request.
+Semantic search is a searching algorithm that builds on the rapid progress made in NLP with deep learning methods. It is possible to get high-dimensional vectors, called embeddings, which approximate the semantic meaning of any text.
+To leverage this for searching, all the searchable documents can be embedded with this semantic vector.]]></description>
+</item>
+<item>
+    <title>Introduction to Fuzzy Logic</title>
+    <link>http://localhost:1313/posts/fuzzy-logic/</link>
+    <pubDate>Thu, 24 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>Oliver Vea</author>
+    <guid>http://localhost:1313/posts/fuzzy-logic/</guid>
+    <description><![CDATA[Introduction As part of developing my dungeon-based RPG, I&rsquo;ve recently been tinkering with fuzzy logic as a way to transform what non-player agents observe into what actions they choose to perform.
+The benefit of using fuzzy logic in this way is that given a set of input parameters, I can make human-understandable and -interpretable rules which can result in a very complex output.
+I haven&rsquo;t yet integrated fuzzy logic into my game, but I thought I would make an explanatory article, which I can follow up with an update on my side-project afterwards.]]></description>
+</item>
+</channel>
+</rss>

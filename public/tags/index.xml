@@ -1,0 +1,63 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - Oliver Vea</title>
+        <link>http://localhost:1313/tags/</link>
+        <description>Tags - Tag - Oliver Vea</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 26 Oct 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>.NET</title>
+    <link>http://localhost:1313/tags/.net/</link>
+    <pubDate>Sat, 26 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/.net/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CSV</title>
+    <link>http://localhost:1313/tags/csv/</link>
+    <pubDate>Sat, 26 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/csv/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Source Generation</title>
+    <link>http://localhost:1313/tags/source-generation/</link>
+    <pubDate>Sat, 26 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/source-generation/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Project</title>
+    <link>http://localhost:1313/tags/project/</link>
+    <pubDate>Wed, 27 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/project/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Semantic Search</title>
+    <link>http://localhost:1313/tags/semantic-search/</link>
+    <pubDate>Wed, 27 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/semantic-search/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Theory</title>
+    <link>http://localhost:1313/tags/theory/</link>
+    <pubDate>Wed, 20 Dec 2023 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/theory/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Fuzzy Logic</title>
+    <link>http://localhost:1313/tags/fuzzy-logic/</link>
+    <pubDate>Mon, 28 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>http://localhost:1313/tags/fuzzy-logic/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>
