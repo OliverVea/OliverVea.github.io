@@ -30,30 +30,10 @@ For a game designer, depending on how spells are designed, the following table m
 | Heavy Strike | 20     | 0.7   | 5    |
 
 As the values of the spells are the domain of the game designer, the programmer does not care about the values themselves and the values do not need to be editable at runtime.
-Rather, we want type safety, reliability, and performance. Therefore we might prefer the following structure:
+Rather, we want type safety, reliability, and performance.
+Therefore we might prefer the following structure:
 
-```csharp
-public static class Spells
-{
-    public class Spell
-    {
-        public int Damage { get; }
-        public float Range { get; }
-        public int Cost { get; }
-
-        public Spell(int damage, float range, int cost)
-        {
-            Damage = damage;
-            Range = range;
-            Cost = cost;
-        }
-    }
-
-    public static readonly Spell Fireball = new(15, 5, 15);
-    public static readonly Spell Frostbolt = new(12, 5, 20);
-    public static readonly Spell HeavyStrike = new(20, 0.7f, 5);
-}
-```
+{{< code language="csharp" source="posts/csv-source-generation/Spells.cs" >}}
 
 However, this structure does not lend itself to easy overviewing, editing or analyzing in a spreadsheet like a csv file will.
 
@@ -64,8 +44,10 @@ It is possible to map the first representation to the second one, which is exact
 
 The idea was derived from an article, [[1](#references)], on source generation by Luca Bolognese. I've made two key modifications to the example:
 
-1. A simple parser for the csv file instead of the nuget package used in the article. The parser will spit out a `CsvDocument` class, which has a type-safe representation of the content in the file.
-2. A run time t4 template, [[2](#references)], to generate the C# code based on the provided `CsvDocument`. I prefer doing text generation with t4 templates, as they are easier to read and understand.
+1. A simple parser for the csv file instead of the nuget package used in the article.
+   The parser will spit out a `CsvDocument` class, which has a type-safe representation of the content in the file.
+1. A run time t4 template, [[2](#references)], to generate the C# code based on the provided `CsvDocument`.
+   I prefer doing text generation with t4 templates, as they are easier to read and understand.
 
 ### Source generation
 

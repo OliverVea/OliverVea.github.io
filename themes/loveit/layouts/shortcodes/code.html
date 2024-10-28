@@ -1,0 +1,11 @@
+{{ $language := .Get "language" }}
+{{ $source := .Get "source" }}
+{{ $options := .Get "options" }}
+
+{{ with $source | readFile }}
+  {{ highlight (trim . "\n\r") $language $options }}
+{{ end }}
+
+<div style="margin-top: -10px;">
+  <i><a href="{{ $source | relURL }}" target="_blank">source</a></i>
+</div>
