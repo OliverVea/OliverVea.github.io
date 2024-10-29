@@ -87,7 +87,17 @@ For example, when a value ends with `s`, the resulting column type is `TimeSpan`
 
 ### What about your project?
 
-* Including the csv source generator in the reader's projects
+The source generator from this project is available as a nuget package [[5]](#references). To use it, simply add a package reference to the project the files should be generated in:
+
+{{< code language="xml" source="posts/csv-source-generation/PackageReference.csproj" >}}
+
+Files included in the `.csproj` file will be converted into static classes:
+
+{{< code language="xml" source="posts/csv-source-generation/CsvInclude.csproj" >}}
+
+The above snippet includes `CsvFiles/MyFile.csv` and will generate a `public static class MyFile` based on the content of the file.
+
+Please note that this source generator has been developed for demonstration purposes. The author does not guarantee quality other than very simple use cases.
 
 ### Additional benefits
 
@@ -99,6 +109,7 @@ For example, when a value ends with `s`, the resulting column type is `TimeSpan`
 ## References
 
 1. [The .NET Compiler Platform SDK - Source generators](https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/#source-generators)
-1. [Github repository](https://github.com/OliverVea/CsvSourceGeneration)
-1. [Luca Bolognese - New C# Source Generator Samples](https://devblogs.microsoft.com/dotnet/new-c-source-generator-samples/)
-1. [Code Generation and T4 Text Templates](https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2022#run-time-t4-text-templates)
+2. [Github repository](https://github.com/OliverVea/CsvSourceGeneration)
+3. [Luca Bolognese - New C# Source Generator Samples](https://devblogs.microsoft.com/dotnet/new-c-source-generator-samples/)
+4. [Code Generation and T4 Text Templates](https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2022#run-time-t4-text-templates)
+5. [CsvSourceGeneration nuget package](https://www.nuget.org/packages/CsvSourceGeneration)
