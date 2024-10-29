@@ -1,5 +1,5 @@
 ---
-title: "Code Generation from csv file with .NET"
+title: "Static Code Generation for Game Data in .NET"
 date: "2024-10-26"
 author: "Oliver Vea"
 tags:
@@ -8,54 +8,97 @@ tags:
     - CSV
 ---
 
-## Setting the stage
+## Use of Tabular Data in Game Development
 
 Recently, I've been developing a game with RPG elements. Naturally, this means that there are hundreds of stat values for abilities, characters, items, enemies, and so on.
 
-In the world of game development it can be a good idea to store this kind of data in spreadsheets as it allows for versatile access to the values for analysis, tuning and easy extension.
+For example, for a game designer, the following table in a spreadsheet might be a good way to work with spell values:
 
-Without source generation, csv files have significant downsides.
-Firstly, to read a csv file at runtime, it must be available.
-If the file cannot be found, an exception will be thrown and the application might crash.
-This can cause unforseen problems in e.g. CI/CD builds, as there might be missing files, even despite of a successful `dotnet build`.
+| Spell        | Damage | Cost |
+| ------------ | ------ | ---- |
+| Fireball     | 15     | 15   |
+| Frostbolt    | 12     | 20   |
 
-In addition to this, reading and parsing csv files at runtime also has performance implications, both in terms of CPU and memory.
+The table can be easily analysed for e.g. Damage/Cost, Damage/Second, grouping spells into power tiers for analysing level progression, and so on.
 
-For a game designer, depending on how spells are designed, the following table might be a good way to work with spell values:
+To use the values in the game systems, the spreadsheet will have to be deserialized into `Spell` objects.
+Without code generation, the csv parsing would have to be done at runtime, which can be very problematic in several ways.
 
-| Spell        | Damage | Range | Cost |
-| ------------ | ------ | ----- | ---- |
-| Fireball     | 15     | 5     | 15   |
-| Frostbolt    | 12     | 5     | 20   |
-| Heavy Strike | 20     | 0.7   | 5    |
+## The Problem with Runtime CSV Parsing
 
-As the values of the spells are the domain of the game designer, the programmer does not care about the values themselves and the values do not need to be editable at runtime.
-Rather, we want type safety, reliability, and performance.
-Therefore we might prefer the following structure:
+The naïve approach to integrating the tabular data into the game code would be to have e.g. csv data included in the shipped game data. The data can be parsed at runtime either during game startup or when loading a scene where the data is needed. This comes with various issues:
 
-{{< code language="csharp" source="posts/csv-source-generation/Spells.cs" >}}
+Firstly, as runtime parsing of csv files requires disk access from the operating system, as well as all the overhead of parsing the csv data, there are performance concerns, both in terms of memory and CPU. This will increase startup and/or loading times of the game, especially on slower devices, such as consoles and mobile devices.
 
-However, this structure does not lend itself to easy overviewing, editing or analyzing in a spreadsheet like a csv file will.
+Secondly, the files will increase the size of the shipped game data. If the files are compressed they will have to be decompressed before being read by the game.
 
-While the structures are different, the content of these representations are the same.
-It is possible to map the first representation to the second one, which is exactly what we will do in this article.
+Thirdly, and perhaps most importantly, files might not be found for any of the following reasons:
 
-## Introducing technologies
+   1. The file has been renamed without updating the code.
+   2. The game code does not properly translate the file to other operating systems.
+   3. The file is simply missing.
 
-The idea was derived from an article, [[1](#references)], on source generation by Luca Bolognese. I've made two key modifications to the example:
+If a required file cannot be found at runtime, the game will certainly throw an exception, which, in the worst case, might crash the application.
 
-1. A simple parser for the csv file instead of the nuget package used in the article.
-   The parser will spit out a `CsvDocument` class, which has a type-safe representation of the content in the file.
-1. A run time t4 template, [[2](#references)], to generate the C# code based on the provided `CsvDocument`.
-   I prefer doing text generation with t4 templates, as they are easier to read and understand.
+## Introducing: Source Generation
 
-### Source generation
+Source generation is an important part of modern .NET development. It allows a developer to write a generator or use existing, optimized generators for various tasks, such as performant json serialization, DI registration, or many other tasks. In many cases it can be an improvement on existing reflection-based solutions, also allowing for trimming of assemblies, greatly reducing the size of published binary files. See the official Microsoft documentation, [[1]](#references), for a more comprehensive description of what code generation is and how to use it.
 
+Source generation is a complex topic and has seen recent additions. This article will not dive into details but will merely implement a source generator for a practical application.
 
-### T4 templates
+## Solving the Problem with a Source Generator
 
+For the use case stated earlier, source generation can alleviate all of these issues and brings with it additional huge benefits to the quality and cohesiveness of game code.
+
+During builds, a source generator will take csv files and generate corresponding C# source files which can be accessed directly in the source code of the game. When the csv files are updated, the source generator will automatically update the generated source code.
+
+This means that the data from the spreadsheets are directly hardcoded into the game, meaning that after a build, the original spreadsheet files are no longer required. The data can simply be statically accessed from anywhere in the game, bypassing the performance requirements and negating any chance at runtime exceptions from missing files.
+
+<!-- Unit tests -->
+
+## Implementation
+
+The complete source code for the implementation, examples and tests can be found in the Github repository, [[2]](#references).
+The code is based on an article by Luca Bolognese, [[3]](#references).
+
+The [**`CsvGenerator`**](https://github.com/OliverVea/CsvSourceGeneration/blob/master/src/CsvGenerator.cs) class is the entry point of the source generation. It enumerates csv files, parsing each into source code and writes the source code as additional files.
+
+The [**`CsvParser`**](https://github.com/OliverVea/CsvSourceGeneration/blob/master/src/CsvParser.cs) class is used to parse csv text into a `CsvDocument`.
+
+The [**`CsvDocument`**](https://github.com/OliverVea/CsvSourceGeneration/blob/master/src/CsvDocument.cs) class is a dynamic representation of a csv file. It contains the list of columns, named [`CsvProperty`](https://github.com/OliverVea/CsvSourceGeneration/blob/master/src/CsvProperty.cs), in the csv files, which will be accessed as properties in the resulting class.
+
+The [**`CsvTemplate.tt`**](https://github.com/OliverVea/CsvSourceGeneration/blob/master/src/CsvTemplate.tt) t4 template takes the `CsvDocument` and converts it into source code, creating a class from the columns of the csv file and creating a `static readonly` instance of the class for each data row.
+
+T4 templates are nifty for generating text based on dynamic data as they are easy to understand and edit. You can read more about them in the official Microsoft documentation, [[4]](#references).
+
+## Code Examples
+
+The final result of the source generation is the following static class generated from the earlier tabular data:
+
+{{< code language="csharp" source="posts/csv-source-generation/Csv_Example.g.cs" >}}
+
+It can then be statically accessed and used in game logic, as in the following snippet of a simple spell execution method:
+
+{{< code language="csharp" source="posts/csv-source-generation/ExecuteSpell.cs" >}}
+
+The source generator also supports multiple different data types such as `int`, `float`, `bool`, `string` and `TimeSpan`, and can easily be modifier and expanded to support additional data types.
+
+For example, when a value ends with `s`, the resulting column type is `TimeSpan`, allowing the user to specify a cooldown of `2.5s` which will be converted into `TimeSpan.FromSeconds(2.5)`. This has obvious benefits as a simple `float` value from a csv file could be minutes, seconds or even milliseconds, but a `TimeSpan` has an implicit time scale, ensuring that calculations are always in the correct unit.
+
+### What about your project?
+
+* Including the csv source generator in the reader's projects
+
+### Additional benefits
+
+* Static analysis of invalid data, missing values, and so on
+* Unit testing + coverage
+
+### Conclusion
 
 ## References
 
+1. [The .NET Compiler Platform SDK - Source generators](https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/#source-generators)
+1. [Github repository](https://github.com/OliverVea/CsvSourceGeneration)
 1. [Luca Bolognese - New C# Source Generator Samples](https://devblogs.microsoft.com/dotnet/new-c-source-generator-samples/)
-2. [Code Generation and T4 Text Templates](https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2022#run-time-t4-text-templates)
+1. [Code Generation and T4 Text Templates](https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates?view=vs-2022#run-time-t4-text-templates)
