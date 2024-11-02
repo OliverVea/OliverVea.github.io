@@ -93,11 +93,11 @@ Please note that due to a lack of support for T4 and increased performance, amon
 
 The final result of the source generation is the following static class generated from the earlier tabular data:
 
-{{< code language="csharp" source="posts/CSV-source-generation/Csv_Example.g.cs" >}}
+{{< code language="csharp" source="posts/csv-source-generation/Csv_Example.g.cs" >}}
 
 It can then be statically accessed and used in game logic, as in the following snippet of a simple spell execution method:
 
-{{< code language="csharp" source="posts/CSV-source-generation/ExecuteSpell.cs" >}}
+{{< code language="csharp" source="posts/csv-source-generation/ExecuteSpell.cs" >}}
 
 The source generator also supports multiple different data types such as `int`, `float`, `bool`, `string` and `TimeSpan`, and can easily be modifier and expanded to support additional data types.
 
@@ -107,11 +107,11 @@ For example, when a value ends with `s`, the resulting column type is `TimeSpan`
 
 The source generator from this project is available as [a nuget package](https://www.nuget.org/packages/CSVSourceGeneration). To use it, simply add a package reference to the project the files should be generated in:
 
-{{< code language="xml" source="posts/CSV-source-generation/PackageReference.csproj" >}}
+{{< code language="xml" source="posts/csv-source-generation/PackageReference.csproj" >}}
 
 Files included in the `.csproj` file will be converted into static classes:
 
-{{< code language="xml" source="posts/CSV-source-generation/CSVInclude.csproj" >}}
+{{< code language="xml" source="posts/csv-source-generation/CSVInclude.csproj" >}}
 
 The above snippet includes `CSVFiles/MyFile.csv` and will generate a `public static class MyFile` based on the content of the file.
 
