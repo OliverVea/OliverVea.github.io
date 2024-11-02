@@ -93,7 +93,7 @@ Please note that due to a lack of support for T4 and increased performance, amon
 
 The final result of the source generation is the following static class generated from the earlier tabular data:
 
-{{< code language="csharp" source="posts/CSV-source-generation/CSV_Example.g.cs" >}}
+{{< code language="csharp" source="posts/CSV-source-generation/Csv_Example.g.cs" >}}
 
 It can then be statically accessed and used in game logic, as in the following snippet of a simple spell execution method:
 
