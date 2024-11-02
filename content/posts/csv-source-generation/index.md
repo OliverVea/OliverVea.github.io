@@ -111,7 +111,7 @@ The source generator from this project is available as [a nuget package](https:/
 
 Files included in the `.csproj` file will be converted into static classes:
 
-{{< code language="xml" source="posts/csv-source-generation/CSVInclude.csproj" >}}
+{{< code language="xml" source="posts/csv-source-generation/CsvInclude.csproj" >}}
 
 The above snippet includes `CSVFiles/MyFile.csv` and will generate a `public static class MyFile` based on the content of the file.
 
