@@ -1,0 +1,3 @@
+<ItemGroup>
+    <PackageReference Include="CsvSourceGeneration" Version="0.0.2" />
+</ItemGroup>
