@@ -1,12 +1,12 @@
-public OneOf<Success, ErrorMessage> ExecuteSpell(Spell spell, Target origin, Target target)
+public Result ExecuteSpell(Spell spell, Target origin, Target target)
 {
     if (spell.Cost > origin.Mana)
     {
-        return new ErrorMessage("Not enough mana to cast spell");
+        return Result.Error("Not enough mana to cast spell");
     }
 
     origin.Mana -= spell.Cost;
     target.Health -= spell.Damage;
 
-    return success;
+    return Result.Success;
 }

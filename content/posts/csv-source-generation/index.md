@@ -1,6 +1,6 @@
 ---
 title: "Static Code Generation for Game Data in .NET"
-date: "2024-10-26"
+date: "2024-11-02"
 author: "Oliver Vea"
 tags:
     - .NET
@@ -28,11 +28,11 @@ Without code generation, the csv parsing would have to be done at runtime, which
 
 The naïve approach to integrating the tabular data into the game code would be to have e.g. csv data included in the shipped game data. The data can be parsed at runtime either during game startup or when loading a scene where the data is needed. This comes with various issues:
 
-Firstly, as runtime parsing of csv files requires disk access from the operating system, as well as all the overhead of parsing the csv data, there are performance concerns, both in terms of memory and CPU. This will increase startup and/or loading times of the game, especially on slower devices, such as consoles and mobile devices.
+**Runtime parsing of csv files requires slow disk access from the operating system.** This, as well as the overhead of parsing csv files, causes performance concerns, both in terms of memory and CPU, increasing startup and/or loading times of the game, especially on slower devices, such as consoles and mobile devices. In worst case, unnessecary heap allocations could cause micro stutters in the game from garbage allocation.
 
-Secondly, the files will increase the size of the shipped game data. If the files are compressed they will have to be decompressed before being read by the game.
+**The files will increase the size of the shipped game data.** If the files are compressed they will have to be decompressed before being read by the game.
 
-Thirdly, and perhaps most importantly, files might not be found for any of the following reasons:
+**Files might not be found,** for any of the following reasons:
 
    1. The file has been renamed without updating the code.
    2. The game code does not properly translate the file to other operating systems.
@@ -69,7 +69,9 @@ The [**`CsvDocument`**](https://github.com/OliverVea/CsvSourceGeneration/blob/ma
 
 The [**`CsvTemplate.tt`**](https://github.com/OliverVea/CsvSourceGeneration/blob/master/src/CsvTemplate.tt) t4 template takes the `CsvDocument` and converts it into source code, creating a class from the columns of the csv file and creating a `static readonly` instance of the class for each data row.
 
-T4 templates are nifty for generating text based on dynamic data as they are easy to understand and edit. You can read more about them in the official Microsoft documentation, [[4]](#references).
+T4 templates, while slowly becoming and outdated technology, are nifty for generating text based on dynamic data as they are easy to understand and edit. You can read more about them in the official Microsoft documentation, [[4]](#references).
+
+Please note that due to a lack of support for T4 and increased performance, among other benefits, lots of modern source generation code instead use `StringBuilder` to compose the source code string.
 
 ## Code Examples
 
@@ -85,7 +87,7 @@ The source generator also supports multiple different data types such as `int`, 
 
 For example, when a value ends with `s`, the resulting column type is `TimeSpan`, allowing the user to specify a cooldown of `2.5s` which will be converted into `TimeSpan.FromSeconds(2.5)`. This has obvious benefits as a simple `float` value from a csv file could be minutes, seconds or even milliseconds, but a `TimeSpan` has an implicit time scale, ensuring that calculations are always in the correct unit.
 
-### What about your project?
+## What about your project?
 
 The source generator from this project is available as a nuget package [[5]](#references). To use it, simply add a package reference to the project the files should be generated in:
 
@@ -99,12 +101,21 @@ The above snippet includes `CsvFiles/MyFile.csv` and will generate a `public sta
 
 Please note that this source generator has been developed for demonstration purposes. The author does not guarantee quality other than very simple use cases.
 
-### Additional benefits
+## Additional benefits
 
-* Static analysis of invalid data, missing values, and so on
-* Unit testing + coverage
+Source generation can bring some additional benefits to your project as the data is available as source code at runtime. For example, invalid data and missing values will be immediately obvious upon a build. If a designer inputs an incorrect value, the first build in any CI/CD pipeline will make it obvious that something is wrong and needs to be fixed. In other words, source generation allows your CI/CD pipeline to fail early.
 
-### Conclusion
+In addition to this, it is easier to integrate your data into unit testing. You can also get a meaningful coverage statistic of your data, not just your code!
+
+## Conclusion
+
+In conclusion, source generation brings lots of benefits to your game:
+
+1. Enforce type safety in your data access
+2. Boost your data access performance
+3. Increase reliability and reduce game crashes
+
+For developers looking to alleviate these issues as well as gaining several auxiliary benefits, I encourage you to explore source generation as a potential solution.                       
 
 ## References
 
