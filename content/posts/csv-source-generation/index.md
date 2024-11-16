@@ -12,7 +12,9 @@ tags:
 
 Recently, I've been developing a game with RPG elements. Naturally, this means that there are hundreds of stat values for abilities, characters, items, enemies, and so on.
 
-For example, for a game designer, the following table in a spreadsheet might be a good way to work with spell values:
+When doing game development, the roles of developers and game designers have distinct areas of responsibility. The developer will write the systems required to make the game run, while the game designer will design and tweak the systems and the various values of the game. 
+
+For example, a game designer might want an overview of statistics for the various spells in the game. The following table in a spreadsheet might be a good way for the game designer to work with spell values:
 
 | Spell        | Damage | Cost |
 |:------------:|:------:|:----:|
