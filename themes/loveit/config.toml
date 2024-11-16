@@ -366,7 +366,7 @@
       Mix = false
       
     [params.page.comment]
-      enable = true
+      enable = false
       
       [params.page.comment.disqus]
         enable = false
@@ -422,7 +422,7 @@
         outlined = false
         
       [params.page.comment.commento]
-        enable = true
+        enable = false
         
       [params.page.comment.utterances]
         enable = false
